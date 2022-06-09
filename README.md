@@ -33,7 +33,7 @@ l-r: vsplit
 ||map|noremap|nmap|nnoremap|  
 |---|---|---|---|---|  
 |递归映射|是|是|否|否|  
-|生效模式|全部模式|全部模式|仅normal模式|仅normal模式|
+|生效模式|仅normal模式|全部模式|全部模式|仅normal模式|
 
 - 按S保存
 map S :w<CR>
