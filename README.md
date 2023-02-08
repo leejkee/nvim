@@ -41,3 +41,5 @@ map s <nop>
 - 按Q退出
 map Q :q<CR>
 
+# branch __g3__
+The lastest configuration for neovim.(G3 is my host.)
