@@ -7,13 +7,13 @@ set nu
 " set the relative number
 set relativenumber
 " all <tab>s will be replaced <space>s
-set expandtab
+ set expandtab
 " display the width of a <tab> as the width of two <space>s
-set tabstop=2
+ set tabstop=4
 " a <tab> will be replaced two <space>s when typing <tab>
-set shiftwidth=2
+ set shiftwidth=4
 " a <tab> will be converted into a <tab> and zero(softtabstop minus tabstop equals zero) <space>
-set softtabstop=2
+" set softtabstop=2
 " ignore the case
 set ignorecase
 set smartcase
@@ -65,7 +65,7 @@ filetype on
 filetype indent on
 filetype plugin on
 filetype plugin indent on
-call plug#begin('C:\Users\cww\AppData\Local\nvim\plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'connorholyday/vim-snazzy'
 Plug 'cateduo/vsdark.nvim'
