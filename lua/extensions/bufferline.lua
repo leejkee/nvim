@@ -4,10 +4,9 @@ if not status_ok then
     vim.notify("bufferline don't exists")
     return
 end
-
 bufferline.setup {
   options = {
-    mode = "tabs", -- set to "tabs" to only show tabpages instead
+    -- mode = "tabs", -- set to "tabs" to only show tabpages instead
     numbers = "ordinal",
     close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
     right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -17,7 +16,7 @@ bufferline.setup {
     -- and so changing this is NOT recommended, this is intended
     -- as an escape hatch for people who cannot bear it for whatever reason
     indicator = { icon = '▎' },
-    buffer_close_icon = '',
+    buffer_close_icon = '',
     modified_icon = '●',
     close_icon = '',
     left_trunc_marker = '',
@@ -38,7 +37,10 @@ bufferline.setup {
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = false,
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
-      return "("..count..")"
+      if context.buffer:current() then
+        return ''
+      end
+      return "("..count..")"..''
     end,
     -- NOTE: this will be called a lot so don't do any heavy processing here
     custom_filter = function(buf_number, buf_numbers)
@@ -71,8 +73,8 @@ bufferline.setup {
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
     separator_style = "slant",
-    enforce_regular_tabs = false,
-    always_show_bufferline = false,
+    enforce_regular_tabs = true,
+    always_show_bufferline = true,
     sort_by = 'id',
   }
 }

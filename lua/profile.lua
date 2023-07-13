@@ -23,7 +23,7 @@ G.opt.fileencoding = 'utf-8'
 -- not conceal any code
 G.opt.conceallevel = 0
 -- clipboard
-G.opt.clipboard = 'unnamed,unnamedplus'
+G.opt.clipboard = 'unnamedplus'
 -- bracket match highlight
 G.opt.showmatch = true
 
@@ -55,14 +55,14 @@ G.opt.expandtab = true
 G.opt.backup = false
 G.opt.swapfile = false
 G.opt.wrap = false
-G.opt.undofile = true
-G.opt.undodir = os.getenv('HOME') .. '/.config/nvim/cache/undodir'
+-- G.opt.undofile = true
+-- G.opt.undodir = os.getenv('HOME') .. '/.config/nvim/cache/undodir'
 G.opt.viminfo = "!,'10000,<50,s10,h"
 
 -- fold
 G.opt.foldenable = true
 G.opt.foldmethod = 'manual'
-G.opt.viewdir = os.getenv('HOME') .. '/.config/nvim/cache/viewdir'
+-- G.opt.viewdir = os.getenv('HOME') .. '/.config/nvim/cache/viewdir'
 G.opt.foldtext = 'v:lua.MagicFoldText()'
 
 G.opt.ma = true
@@ -79,7 +79,7 @@ G.opt.cul = true
 -- split
 -- G.opt.splitbelow = true
 G.opt.splitright = true
- 
+
 -- draw the signcolumn
 G.opt.signcolumn = 'yes'
 G.opt.fillchars = 'fold:-,stlnc:#,eob: ,foldsep:='
@@ -88,6 +88,7 @@ G.opt.termguicolors = true
 
 G.api.nvim_command(':filetype plugin on')
 
+G.g.mapleader = ' '
 
 G.cmd([[
     hi Normal ctermfg=7 ctermbg=NONE cterm=NONE

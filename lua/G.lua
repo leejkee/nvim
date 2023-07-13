@@ -23,11 +23,11 @@ function G.cmd(cmd)
     G.api.nvim_command(cmd)
 end
 
-function G.exec(c)
-    G.api.nvim_exec(c)
-end
-
-function G.eval(c)
-    return G.api.nvim_eval(c)
-end
+-- function G.exec(c)
+    -- G.api.nvim_exec(c)
+-- end
+-- 
+-- function G.eval(c)
+    -- return G.api.nvim_eval(c)
+-- end
 return G
