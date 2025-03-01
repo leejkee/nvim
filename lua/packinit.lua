@@ -1,20 +1,25 @@
 local G = require('G')
 -- install packer auto
-local packer_bootstrap = false
-local install_path = G.fn.stdpath('data')..'\\site\\pack\\packer\\start\\packer.nvim'
-local compiled_path = G.fn.stdpath('config')..'\\plugin\\packer_compiled.lua'
+local install_path = G.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+-- local install_path = G.fn.stdpath('data')..'\\site\\pack\\packer\\start\\packer.nvim'
+local compiled_path = G.fn.stdpath('config')..'/plugin/packer_compiled.lua'
+-- local compiled_path = G.fn.stdpath('config')..'\\plugin\\packer_compiled.lua'
 
-if G.fn.empty(G.fn.glob(install_path)) > 0 then
-    print('Installing packer.nvim...')
-    G.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    G.fn.system({'rm', '-rf', compiled_path})
-    G.cmd [[packadd packer.nvim]]
-    packer_bootstrap = true
+local ensure_packer = function()
+    if G.fn.empty(G.fn.glob(install_path)) > 0 then
+        print('Installing packer.nvim...')
+        G.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+        G.fn.system({'rm', '-rf', compiled_path})
+        G.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
 end
 
 
-require('packer').startup({
-    function(use)
+local packer_bootstrap = ensure_packer()
+
+return require('packer').startup(function(use)
         -- packer
         use { 'wbthomason/packer.nvim' }
         -- colorscheme
@@ -56,18 +61,16 @@ require('packer').startup({
         use "windwp/nvim-autopairs"
         use {
             'akinsho/bufferline.nvim',
-            tag = "v2.*",
-            requires = 'kyazdani42/nvim-web-devicons'
+            tag = "*",
+            requires = 'nvim-tree/nvim-web-devicons'
         }
         -- status line
         use {
             'nvim-lualine/lualine.nvim',
             requires = { 'kyazdani42/nvim-web-devicons', opt = true }
         }
+    if packer_bootstrap then
+        require('packer').sync()
     end
+end)
 
-})
-
-if packer_bootstrap then
-    require('packer').sync()
-end
